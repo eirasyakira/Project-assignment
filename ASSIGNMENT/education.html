@@ -1,0 +1,275 @@
+<html>
+<head>
+    <title>Education Journey</title>
+    
+    <!--CSS-->
+    <style>
+        /*styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: maroon;
+            background-color: rgb(255, 251, 235);
+            background-image: url('background.avif');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+    
+        /*header section*/
+        header {
+            background-color: bisque;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+    
+        /*header Title*/
+        .header-left {
+            font-size: 24px;
+            font-weight: bold;
+            color: peru;
+        }
+
+        /* Dancing text animation */
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-10px); }
+            40% { transform: translateY(10px); }
+            60% { transform: translateY(-5px); }
+            80% { transform: translateY(5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .jumping-letter {
+            display: inline-block;
+            animation: jump 4s infinite;
+        }
+
+        /*add delay to each letter*/
+        .jumping-letter:nth-child(1) { animation-delay: 0s; }
+        .jumping-letter:nth-child(2) { animation-delay: 0.1s; }
+        .jumping-letter:nth-child(3) { animation-delay: 0.2s; }
+        .jumping-letter:nth-child(4) { animation-delay: 0.3s; }
+        .jumping-letter:nth-child(5) { animation-delay: 0.4s; }
+        .jumping-letter:nth-child(6) { animation-delay: 0.5s; }
+        .jumping-letter:nth-child(7) { animation-delay: 0.6s; }
+        .jumping-letter:nth-child(8) { animation-delay: 0.7s; }
+        .jumping-letter:nth-child(9) { animation-delay: 0.8s; }
+        .jumping-letter:nth-child(10) { animation-delay: 0.9s; }
+        .jumping-letter:nth-child(11) { animation-delay: 1.0s; }
+        .jumping-letter:nth-child(12) { animation-delay: 1.1s; }
+        .jumping-letter:nth-child(13) { animation-delay: 1.2s; }
+        .jumping-letter:nth-child(14) { animation-delay: 1.3s; }
+        .jumping-letter:nth-child(15) { animation-delay: 1.4s; }
+        .jumping-letter:nth-child(16) { animation-delay: 1.5s; }
+        .jumping-letter:nth-child(17) { animation-delay: 1.6s; }
+        .jumping-letter:nth-child(18) { animation-delay: 1.7s; }
+        .jumping-letter:nth-child(19) { animation-delay: 1.8s; }
+    
+        /*navigation bar*/
+        nav {
+            margin-right: 20px;
+        }
+    
+        nav a {
+            color: peru;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+    
+        nav a:hover {
+            background-color: tan;
+        }
+    
+        h2 {
+            margin-left: 20px;
+            font-style: oblique;
+            font-weight: bold;
+        }
+    
+        /*education container*/
+        .education-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 50px;
+            width: 75%;
+            margin: 50px auto;
+        }
+    
+        /*content box */
+        .content-box {
+            background-color: bisque;
+            padding: 20px;
+            border: 1px solid saddlebrown;
+            width: 240px;
+            margin: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+    
+        /*high school and internship*/
+        .education-size-1 {
+            height: 400px; /*same height for high school and internship*/
+        }
+    
+        /*diploma and future plans */
+        .education-size-2 {
+            height: 350px; /*same height for diploma and future plans */
+        }
+    
+        /*images inside the boxes*/
+        #highschool img, #collage img, #intern img, #future img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease; /*transition on hover*/
+        }
+    
+        #highschool img:hover, #collage img:hover, #intern img:hover, #future img:hover {
+            transform: scale(1.1); /*zoom in effect on hover*/
+        }
+    
+        /*footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <!--header section-->
+    <header>
+        <div id="header-title" class="header-left"></div>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="education.html">Educational Journey</a>
+            <a href="experiences.html">Other Experiences</a>
+            <a href="contact.html">Contact Me</a>
+        </nav>
+    </header>
+
+    <!--education title aligned left below the header-->
+    <h2>My Education Journey</h2>
+    
+    <!--content box for datetime-->
+    <div class="datetime-box">
+        <div id="datetime" class="date-time"></div>
+    </div>
+
+    <!--education section-->
+    <div class="education-content">
+        <!--first box-->
+        <div class="education content-box education-size-1">
+            <h3>High School</h3>
+            <p>Completed my secondary education with a focus on science and technology, laying the foundation for my interest in computer science.</p>
+            <div id="highschool">
+                <img src="smk.jpg" alt="High School Picture"
+                    onmouseover="hoverImage('highschool')" onmouseout="restoreImage('highschool')">
+            </div>
+        </div>
+
+        <!--second box-->
+        <div class="education content-box education-size-2">
+            <h3>Diploma</h3>
+            <p>Currently pursuing a Diploma in Computer Science, focusing on software development and data structures.</p>
+            <div id="collage">
+                <img src="kpmb.jpg" alt="Diploma Picture"
+                    onmouseover="hoverImage('collage')" onmouseout="restoreImage('collage')">
+            </div>
+        </div>
+
+        <!--third box-->
+        <div class="education content-box education-size-1">
+            <h3>Internship</h3>
+            <p>Gained hands-on experience during my professional internship, where I applied my academic knowledge to real-world projects.</p>
+            <div id="intern">
+                <img src="internt.avif" alt="Internship Picture"
+                    onmouseover="hoverImage('intern')" onmouseout="restoreImage('intern')">
+            </div>
+        </div>
+
+        <!--fourth box-->
+        <div class="education content-box education-size-2">
+            <h3>Future Plans</h3>
+            <p>Plan to continue education in Computer Science and pursue a career in software engineering.</p>
+            <div id="future">
+                <img src="future.webp" alt="Future Plans Picture"
+                    onmouseover="hoverImage('future')" onmouseout="restoreImage('future')">
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer>
+        &copy;2024 Syakirah Portfolio
+    </footer>
+
+    <!--JavaScript-->
+    <script>
+        //apply the dancing text to the header title
+        const portfolioTitle = "Syakirah's Portfolio";
+        const headerElement = document.getElementById('header-title');
+
+        //split the title into letters and wrap them with span tags
+        for (let i = 0; i < portfolioTitle.length; i++) {
+            const span = document.createElement('span');
+            span.classList.add('jumping-letter');
+            span.textContent = portfolioTitle[i];
+            headerElement.appendChild(span);
+        }
+
+        //display date and time
+        function showDateTime() {
+            var date = new Date(); //create a new date
+            document.getElementById("datetime").innerHTML = date.toLocaleString(); //display date and time
+        }
+
+        //update the time every second
+        setInterval(showDateTime, 1000);
+
+        // Mouse rollover effect for images
+        function hoverImage(imageId) {
+            var image = document.querySelector('#' + imageId + ' img'); // Get the image element inside the div
+            if (imageId === 'highschool') {
+                image.setAttribute('src', 'sek.jpg');  // Change to a new image on hover
+            } else if (imageId === 'collage') {
+                image.setAttribute('src', 'kpmb2.jpg');  // Change to a new image on hover
+            } else if (imageId === 'intern') {
+                image.setAttribute('src', 'intern1.jpg');  // Change to a new image on hover
+            } else if (imageId === 'future') {
+                image.setAttribute('src', 'future1.jpg');  // Change to a new image on hover
+            }
+        }
+
+        // Restore original image on mouse out
+        function restoreImage(imageId) {
+            var image = document.querySelector('#' + imageId + ' img'); // Get the image element inside the div
+            if (imageId === 'highschool') {
+                image.setAttribute('src', 'smk.jpg');  // Restore original image
+            } else if (imageId === 'collage') {
+                image.setAttribute('src', 'kpmb.jpg');  // Restore original image
+            } else if (imageId === 'intern') {
+                image.setAttribute('src', 'internt.avif');  // Restore original image
+            } else if (imageId === 'future') {
+                image.setAttribute('src', 'future.webp');  // Restore original image
+            }
+        }
+        alert("Syakirah's Education Journey Timeline")
+    </script>
+
+</body>
+</html>

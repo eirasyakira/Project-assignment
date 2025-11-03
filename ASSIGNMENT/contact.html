@@ -1,0 +1,268 @@
+<html>
+<head>
+    <title>Contact Me</title>
+
+    <!--CSS-->
+    <style>
+        /*styling*/
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: maroon;
+            background-color: rgb(255, 251, 235);
+            background-image: url('background.avif');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        /*header section*/
+        header {
+            background-color: bisque;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        /*header title with dancing text*/
+        .header-left {
+            font-size: 24px;
+            font-weight: bold;
+            color: peru;
+        }
+
+        /* Dancing text animation */
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-10px); }
+            40% { transform: translateY(10px); }
+            60% { transform: translateY(-5px); }
+            80% { transform: translateY(5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .jumping-letter {
+            display: inline-block;
+            animation: jump 4s infinite;
+        }
+
+        /*add delay to each letter*/
+        .jumping-letter:nth-child(1) { animation-delay: 0s; }
+        .jumping-letter:nth-child(2) { animation-delay: 0.1s; }
+        .jumping-letter:nth-child(3) { animation-delay: 0.2s; }
+        .jumping-letter:nth-child(4) { animation-delay: 0.3s; }
+        .jumping-letter:nth-child(5) { animation-delay: 0.4s; }
+        .jumping-letter:nth-child(6) { animation-delay: 0.5s; }
+        .jumping-letter:nth-child(7) { animation-delay: 0.6s; }
+        .jumping-letter:nth-child(8) { animation-delay: 0.7s; }
+        .jumping-letter:nth-child(9) { animation-delay: 0.8s; }
+        .jumping-letter:nth-child(10) { animation-delay: 0.9s; }
+        .jumping-letter:nth-child(11) { animation-delay: 1.0s; }
+        .jumping-letter:nth-child(12) { animation-delay: 1.1s; }
+        .jumping-letter:nth-child(13) { animation-delay: 1.2s; }
+        .jumping-letter:nth-child(14) { animation-delay: 1.3s; }
+        .jumping-letter:nth-child(15) { animation-delay: 1.4s; }
+        .jumping-letter:nth-child(16) { animation-delay: 1.5s; }
+        .jumping-letter:nth-child(17) { animation-delay: 1.6s; }
+        .jumping-letter:nth-child(18) { animation-delay: 1.7s; }
+        .jumping-letter:nth-child(19) { animation-delay: 1.8s; }
+
+        /*navigation bar*/
+        nav {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: peru;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: tan;
+        }
+
+        .datetime-box {
+            font-weight: bold;
+            padding: 50px;
+        }
+
+        .contact-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: tan;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .contact-form h2 {
+            font-size: 24px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: rgb(35, 35, 35);
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: peru;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .contact-info img {
+            width: 40px;
+            transition: transform 0.3s;
+        }
+
+        .contact-info img:hover {
+            transform: scale(1.2);
+        }
+
+        /*footer*/
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            left: 0;
+        }
+
+        #message-box {
+            margin-top: 20px;
+            color: maroon;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header-title" class="header-left"></div>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="education.html">Educational Journey</a>
+            <a href="experiences.html">Other Experiences</a>
+            <a href="contact.html">Contact Me</a>
+        </nav>
+    </header>
+
+    <!--content box-->
+    <div class="datetime-box">
+        <div id="datetime"></div>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Contact Me!</h2>
+            <form id="contactForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+    
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" required>
+    
+                <label for="message">Your Message:</label>
+                <textarea id="message" rows="5" required></textarea>
+    
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+    </div>
+
+    <div class="contact-info" style="margin-top: 20px;">
+        <p>Email: <a href="mailto:eiranursyakira@gmail.com">eiranursyakira@gmail.com</a></p>
+        <p>Find me on other social media: 
+            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+            <a href="https://www.twitter.com" target="_blank">Twitter</a> |
+            <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        </p>
+    </div>
+
+    <div id="message-box"></div>
+
+    <footer>
+        &copy;2024 Syakirah Portfolio
+    </footer>
+
+    <!--script-->
+    <script>
+        //apply the dancing text to the header title
+        const portfolioTitle = "Syakirah's Portfolio";
+        const headerElement = document.getElementById('header-title');
+
+        //split the title into letters and wrap them with span tags
+        for (let i = 0; i < portfolioTitle.length; i++) {
+            const span = document.createElement('span');
+            span.classList.add('jumping-letter');
+            span.textContent = portfolioTitle[i];
+            headerElement.appendChild(span);
+        }
+
+        //form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); //prevent default form submission
+
+            //get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            //simple validation
+            if (name === '' || email === '' || message === '') {
+                alert('Please fill out all fields');
+            } else {
+                alert('Thank you, ' + name + '! Your message has been sent successfully.');
+                document.getElementById('contactForm').reset(); // Clear the form
+            }
+        });
+
+        //display date and time
+        function showDateTime() {
+            const date = new Date(); // Create a new date object
+            document.getElementById("datetime").innerHTML = date.toLocaleString(); // Display date and time
+        }
+
+        //update the time every second
+        setInterval(showDateTime, 1000);
+
+        //window onload alert
+        alert("Interested? Contact Me!");
+    </script>
+</body>
+</html>

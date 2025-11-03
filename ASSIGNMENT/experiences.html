@@ -1,0 +1,277 @@
+<html>
+<head>
+    <title>Experiences</title>
+    
+    <!--CSS-->
+    <style>
+        /*styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: maroon;
+            background-color: rgb(255, 251, 235);
+            background-image: url('background.avif');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+
+        /*header section*/
+        header {
+            background-color: bisque;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        /*header Title*/
+        .header-left {
+            font-size: 24px;
+            font-weight: bold;
+            color: peru;
+            animation: colorChange 5s infinite;
+        }
+
+        /* Dancing text animation */
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-10px); }
+            40% { transform: translateY(10px); }
+            60% { transform: translateY(-5px); }
+            80% { transform: translateY(5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .jumping-letter {
+            display: inline-block;
+            animation: jump 4s infinite;
+        }
+
+        /*add delay to each letter*/
+        .jumping-letter:nth-child(1) { animation-delay: 0s; }
+        .jumping-letter:nth-child(2) { animation-delay: 0.1s; }
+        .jumping-letter:nth-child(3) { animation-delay: 0.2s; }
+        .jumping-letter:nth-child(4) { animation-delay: 0.3s; }
+        .jumping-letter:nth-child(5) { animation-delay: 0.4s; }
+        .jumping-letter:nth-child(6) { animation-delay: 0.5s; }
+        .jumping-letter:nth-child(7) { animation-delay: 0.6s; }
+        .jumping-letter:nth-child(8) { animation-delay: 0.7s; }
+        .jumping-letter:nth-child(9) { animation-delay: 0.8s; }
+        .jumping-letter:nth-child(10) { animation-delay: 0.9s; }
+        .jumping-letter:nth-child(11) { animation-delay: 1.0s; }
+        .jumping-letter:nth-child(12) { animation-delay: 1.1s; }
+        .jumping-letter:nth-child(13) { animation-delay: 1.2s; }
+        .jumping-letter:nth-child(14) { animation-delay: 1.3s; }
+        .jumping-letter:nth-child(15) { animation-delay: 1.4s; }
+        .jumping-letter:nth-child(16) { animation-delay: 1.5s; }
+        .jumping-letter:nth-child(17) { animation-delay: 1.6s; }
+        .jumping-letter:nth-child(18) { animation-delay: 1.7s; }
+        .jumping-letter:nth-child(19) { animation-delay: 1.8s; }
+
+        /*navigation bar*/
+        nav {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: peru;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        /*backgound nav when click*/
+        nav a:hover {
+            background-color: tan;
+        }
+
+        h2{
+            margin-left: 20px;
+            font-style: oblique;
+            font-weight: bold;
+        }
+
+        /*experiences section*/
+        .experiences-container {
+            width: 80%;
+            margin:50px auto;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .experience {
+            background-color: bisque;
+            padding: 20px;
+            border: 1px solid saddlebrown;
+            width: 250px; /*spacing box*/
+            height: 350px;
+            display: block; /*layout for top-bottom image and text */
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .experience:hover {
+            transform: scale(1.05); /*zoom effect*/
+        }
+
+        .experience h3 {
+            font-size: 24px;
+            color: peru;
+            position: relative;
+        }
+
+        @keyframes textEffect {
+            0% { color: tan; }
+            50% { color: maroon; }
+            100% { color: tan; }
+        }
+
+        .experience p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: maroon;
+        }
+
+        .experience img {
+            width: 160px;
+            height: 220px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .experience img:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        /*footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--header section-->
+    <header>
+        <div id="header-title" class="header-left"></div>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="education.html">Educational Journey</a>
+            <a href="experiences.html">Other Experiences</a>
+            <a href="contact.html">Contact Me</a>
+        </nav>
+    </header>
+
+    <!--experiences title aligned left below the header-->
+    <h2>Other Experiences & Skills</h2>
+    <!--content box-->
+    <div class="datetime-box">
+        <div id="datetime" class="date-time"></div>
+    </div>
+
+    <!--main section with image-->
+    <div class="experiences-container">
+        <!--first box-->
+        <div class="experience">
+            <img src="photoshop.jpg" alt="photoshop skill" id="photoshop-img"
+                onmouseover="hoverImage('photoshop-img')" onmouseout="restoreImage('photoshop-img')">
+            <p>Proficient in graphic design and digital editing, utilizing tools like Photoshop to create visually engaging content.</p>
+        </div>
+
+        <!--2nd box-->
+        <div class="experience">
+            <img src="coding.jpg" alt="coding skill" id="coding-img"
+                onmouseover="hoverImage('coding-img')" onmouseout="restoreImage('coding-img')">
+                <p>Experienced in programming with SQL Database, Python and JavaScript, and skilled in web development using HTML, CSS, and JavaScript.</p>
+        </div>
+
+        <!--3rd box-->
+        <div class="experience">
+            <img src="presentation.jpg" alt="presentation skill" id="present-img"
+                onmouseover="hoverImage('present-img')" onmouseout="restoreImage('present-img')">
+                <p>Developed strong public speaking and presentation skills, creating engaging and effective presentations for academic and professional settings</p>
+        </div>
+
+        <!--4th box-->
+        <div class="experience">
+            <img src="assembly.jpg" alt="assambly comp system" id="assembly-img"
+                onmouseover="hoverImage('assembly-img')" onmouseout="restoreImage('assembly-img')">
+                <p>Skilled in assembling and troubleshooting computer hardware, with hands-on experience in building and maintaining computer systems.</p>
+        </div>
+    </div>
+    <!--footer-->
+    <footer>
+        &copy;2024 Syakirah Portfolio
+    </footer>
+
+    <!--javaScript-->
+    <script>
+        //apply the dancing text to the header title
+        const portfolioTitle = "Syakirah's Portfolio";
+        const headerElement = document.getElementById('header-title');
+
+        //split the title into letters and wrap them with span tags
+        for (let i = 0; i < portfolioTitle.length; i++) {
+            const span = document.createElement('span');
+            span.classList.add('jumping-letter');
+            span.textContent = portfolioTitle[i];
+            headerElement.appendChild(span);
+        }
+
+        //display date and time
+        function showDateTime() {
+            var date = new Date(); //create a new date
+            document.getElementById("datetime").innerHTML = date.toLocaleString(); //display date and time
+        }
+        //update the time every second
+        setInterval(showDateTime, 1000);
+
+        // Mouse rollover effect for images
+        function hoverImage(imageId) {
+            var image = document.getElementById(imageId);
+            if (imageId === 'photoshop-img') {
+                image.setAttribute('src', 'poster1.png');  // Image changes on hover
+            } else if (imageId === 'coding-img') {
+                image.setAttribute('src', 'coding2.jpg');  // Image changes on hover
+            } else if (imageId === 'present-img') {
+                image.setAttribute('src', 'present2.jpg');  // Image changes on hover
+            } else if (imageId === 'assembly-img') {
+                image.setAttribute('src', 'troubleshoot.jpg');  // Image changes on hover
+            }
+        }
+        // Restore original image on mouse out
+        function restoreImage(imageId) {
+            var image = document.getElementById(imageId);
+            if (imageId === 'photoshop-img') {
+                image.setAttribute('src', 'photoshop.jpg');  // Original image restored
+            } else if (imageId === 'coding-img') {
+                image.setAttribute('src', 'coding.jpg');  // Original image restored
+            } else if (imageId === 'present-img') {
+                image.setAttribute('src', 'presentation.jpg');  // Original image restored
+            } else if (imageId === 'assembly-img') {
+                image.setAttribute('src', 'assembly.jpg');  // Original image restored
+            }
+        }
+        alert("Syakirah's Other Experiences & Skills")
+
+    </script>
+
+</body>
+</html>

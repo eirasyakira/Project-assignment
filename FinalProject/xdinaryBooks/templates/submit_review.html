@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            color: maroon;
+            background-color: rgb(255, 251, 235);
+            text-align: center;
+        }
+
+        /*header section*/
+        header {
+            background-color: bisque;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        /*header Title*/
+        .header-left {
+            font-size: 32px;
+            font-weight: bold;
+            color: peru;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-box img {
+            border-radius: 50%;
+            width: 40px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .profile-box a {
+            text-decoration: none;
+            color: maroon;
+            font-weight: bold;
+        }
+
+        .profile-box a:hover,
+        .cart-icon:hover {
+            color: peru;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: peru;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart-icon {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            color: peru;
+        }
+
+        .review-form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .review-form label {
+            display: inline-block;
+            width: 150px;
+            vertical-align: top;
+            margin-bottom: 10px;
+        }
+
+        .review-form input[type="text"],
+        .review-form textarea {
+            width: calc(100% - 160px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+
+        .review-form input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        .review-form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: peru;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Added border-radius for better button view */
+        }
+
+        .review-form input[type="submit"]:hover {
+            background-color: maroon;
+            color: bisque; /* Changed text color on hover for better contrast */
+        }
+    </style>
+</head>
+<body>
+    <!--header section-->
+    {% if not user.is_authenticated %}
+        <script>window.location.href = "{% url 'login' %}?next={{ request.path }}";</script>
+    {% else %}
+    <!--review form section-->
+    <section class="review-form">
+        <h2>Submit Review for {{ book.title }}</h2>
+        <form method="post" action="{% url 'submit_review' book.bookid %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="reviewtext">Review Text:</label>
+            <textarea id="reviewtext" name="reviewtext" rows="4" required></textarea>
+            <label for="reviewimage">Review Image (optional):</label>
+            <input type="file" id="reviewimage" name="reviewimage">
+            <input type="submit" value="Submit Review">
+        </form>
+    </section>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

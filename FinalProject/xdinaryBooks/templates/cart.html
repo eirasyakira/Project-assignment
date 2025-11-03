@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: peru;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart-icon {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            color: peru;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: auto;
+        }
+
+        .book-list {
+            display: block;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .book-item {
+            margin: 20px 0;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+    <!--header section-->
+    {% if not user.is_authenticated %}
+        <script>window.location.href = "{% url 'login' %}?next={{ request.path }}";</script>
+    {% else %}
+    <!--cart section-->
+    <section class="book-list">
+        <h2>Your Cart</h2>
+        {% if books %}
+            {% for book in books %}
+                <div class="book-item">
+                    <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.price }}</p>
+                    <a href="{% url 'remove_from_cart' book.bookid %}">Remove</a>
+                </div>
+            {% endfor %}
+            <h3>Total Price: ${{ total_price }}</h3>
+            <form action="{% url 'purchase' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Purchase">
+            </form>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </section>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

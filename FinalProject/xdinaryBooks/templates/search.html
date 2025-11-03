@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <!--header section-->
+    <br>
+    <h2>SEARCH BOOK</h2>
+    <br>
+   
+    <section class="book-list">
+        {% for value in data %}
+            <div class="book-item">
+                <img src="{{value.image.url}}" alt="{{value.title}}">
+                <p>Title: <a href="{% url 'book_detail' value.bookid %}">{{value.title}}</a></p>
+                <p>Author: {{value.author}}</p>
+                <p>Price: {{value.price}}</p>
+            </div>
+        {% endfor %}
+    </section>
+    <br><br>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <style>
+        .purchase-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align the content */
+            text-align: center; /* Center align the text */
+        }
+
+        .purchase-item {
+            margin: 20px auto; /* Center the purchase items */
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px; /* Limit the width of the purchase items */
+        }
+
+    </style>
+</head>
+<body>
+    <!--header section-->
+    {% if not user.is_authenticated %}
+        <script>window.location.href = "{% url 'login' %}?next={{ request.path }}";</script>
+    {% else %}
+    <!--purchase section-->
+    <section class="purchase-container">
+        <h2>Purchase Confirmation</h2>
+        <p>Your E-book will be sent to your email when the payment is done.</p>
+        <form method="post" action="{% url 'purchase' %}">
+            {% csrf_token %}
+            <div class="purchase-item">
+                <label for="email">Email to send receipt:</label>
+                <input type="email" id="email" name="email" value="{{ customer.email }}" required><br>
+                <h3>Books in your order:</h3>
+                <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+                    <ul style="list-style-type: none; padding: 0;">
+                        {% for book in books %}
+                            <li style="padding: 5px 0;">
+                                <strong>{{ book.title }}</strong> - ${{ book.price }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <h3>Total Price: ${{ total_price }}</h3>
+                <input type="submit" value="Confirm Purchase">
+            </div>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        {% if order %}
+            <h3>Order Details</h3>
+            <div class="purchase-item">
+                <p><strong>Order ID:</strong> {{ order.orderid }}</p>
+                <p><strong>Order Date:</strong> {{ order.orderdate }}</p>
+                <p><strong>Total Price:</strong> ${{ order.totalprice }}</p>
+                <h4>Books:</h4>
+                <ul style="list-style-type: none; padding: 0;">
+                    {% for book in order.bookid.all %}
+                        <li style="padding: 5px 0;">
+                            <strong>{{ book.title }}</strong> - ${{ book.price }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

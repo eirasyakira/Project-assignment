@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <style>
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .book-item {
+            margin: 20px;
+            text-align: center;
+            flex: 1 1 calc(16.66% - 40px); /* 6 books per line */
+            box-sizing: border-box;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: 220px; /* Set a fixed height for all book images */
+            object-fit: cover; /* Ensure the image covers the entire area */
+        }
+    </style>
+</head>
+<body>
+    <!--header section-->
+    <!--book list section-->
+    <ul class="book-list">
+        {% for book in books %}
+        <li class="book-item">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+            <h3><a href="{% url 'book_detail' book.bookid %}">{{ book.title }}</a></h3>
+            <p>Author: {{ book.author }}</p>
+            <p>Price: ${{ book.price }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

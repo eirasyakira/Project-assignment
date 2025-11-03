@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        .order-details {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            text-align: left;
+        }
+
+        .order-details label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .order-details input[type="text"],
+        .order-details input[type="email"],
+        .order-details input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .order-details input[type="submit"] {
+            padding: 10px 20px;
+            background-color: peru;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-details input[type="submit"]:hover {
+            background-color: maroon;
+        }
+    </style>
+</head>
+<body>
+    <!--header section-->
+    {% if not user.is_authenticated %}
+        <script>window.location.href = "{% url 'login' %}?next={{ request.path }}";</script>
+    {% else %}
+    <!--order confirmation section-->
+    <section class="order-details">
+        <h2>Order Confirmation</h2>
+        <p>Thank you for your purchase! Your order details are as follows:</p>
+        <h3>Customer Details:</h3>
+        <p><strong>Username:</strong> {{ customer.username }}</p>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <p><strong>Phone:</strong> {{ customer.phone }}</p>
+        <h3>Order Details:</h3>
+        <p><strong>Order ID:</strong> {{ order.orderid }}</p>
+        <p><strong>Order Date:</strong> {{ order.orderdate }}</p>
+        <p><strong>Total Price:</strong> ${{ order.totalprice }}</p>
+        <h3>Books:</h3>
+        <ul style="list-style-type: none; padding: 0;">
+            {% for book in books %}
+                <li style="padding: 5px 0;">
+                    <strong>{{ book.title }}</strong> - ${{ book.price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

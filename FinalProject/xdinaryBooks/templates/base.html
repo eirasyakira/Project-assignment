@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- ...existing code... -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            color: maroon;
+            background-color: rgb(255, 251, 235);
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+
+        /*header section*/
+        header {
+            background-color: bisque;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        /*header Title*/
+        .header-left {
+            font-size: 32px;
+            font-weight: bold;
+            color: peru;
+        }
+
+        .header-left a:hover {
+            color: #973f2c;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-box img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+        }
+
+        .profile-box a {
+            text-decoration: none;
+            color: maroon;
+            font-weight: bold;
+        }
+
+        .profile-box a.home-icon {
+            margin-right: 15px; /* Add space between home link and profile picture */
+        }
+
+        .profile-box a:hover,
+        .cart-icon:hover {
+            color: peru;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: peru;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart-icon {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            color: peru;
+        }
+
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .book-item {
+            margin: 20px;
+            text-align: center;
+            flex: 1 1 calc(25% - 40px); /* 4 books per line */
+            box-sizing: border-box;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: 220px; /* Set a fixed height for all book images */
+            object-fit: cover; /* Ensure the image covers the entire area */
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: bisque;
+            color: maroon;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: maroon;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: bisque;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <!--header section-->
+    <header>
+        <div class="header-left"><a href="{% url 'main' %}" style="text-decoration: none; color: peru;">XdinaryBooks</a></div>
+        <div class="search-bar">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="search_value" placeholder="Title/Author">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="profile-box">
+            <a href="{% url 'main' %}" class="home-icon">home</a>
+            <img src="{% static 'profileicon.jpg' %}" alt="profile Image">
+            <div class="dropdown">
+                <button class="dropbtn">Profile</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile' %}">View Profile</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'signup' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">My Purchases</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'view_orders' %}">My Orders</a>
+                    <a href="{% url 'my_purchases' %}">Review</a>
+                </div>
+            </div>
+            <a href="{% url 'cart' %}" class="cart-icon">
+                <img src="{% static 'carticon.png' %}" alt="Cart">
+                <span>cart</span>
+            </a>
+        </div>
+    </header>
+    
+    <!--content section-->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <!--footer-->
+    <footer>
+        &copy; 2025 E-Book Services XdinaryBooks
+    </footer>
+</body>
+</html>
